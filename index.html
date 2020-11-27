@@ -164,7 +164,7 @@ function validate() {
     }
     else if (snapshot.val().type == "joined"){
     				$(".chat-body-").append(
-                "<div class='message-send'><div class='message'><span style='font-weight: bold;font-size: 15px' class='name badge badge-light'>" + snapshot.val().name + "</span> just joined the chat!<br><br>" + "<p class='badge badge-secondary'>" + snapshot.val().time +"</p></div></div>"
+                "<div class='message-send'><div class='message'><span style='font-weight: bold;font-size: 15px' class='name'>" + snapshot.val().name + "</span> just joined the chat!<br><br>" + "<p class='badge badge-secondary'>" + snapshot.val().time +"</p></div></div>"
             );
     };
             $(".chat-body-").scrollTop($(".app").height());

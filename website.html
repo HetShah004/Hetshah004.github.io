@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+				<meta property="og:title" content="Profile - Het">
+				<meta property="og:image" content="https://wallpapercave.com/wp/wp5146415.jpg">
+				<meta property="og:description" content="A profile about Het">
+				<meta name="keywords" content="profile, het, drivetoweb, drw">
+				<meta property="og:video" content="https://www.youtube.com/871zTXkj4qA">
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Lobster");
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+@import url('https://fonts.googleapis.com/css2?family=Goldman&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
+
+body .app {
+				transition: 1s;
+}
+
+.welcome {
+    width:100vw;
+    height:50vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    font-family: "Goldman";
+    background-image: url("https://wallpapercave.com/wp/wp3688763.jpg");
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: 1s;
+}
+
+.welcome p {
+    font-weight: 600;
+    animation-name: welcome-ani;
+    animation-iteration-count: infinite;
+    animation-duration: 3s;
+    color: #222222;
+    text-shadow: #fee715ff 0px 0px 20px;
+}
+
+.add-snapchat {
+    background-color: #fffc00;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    border-radius: 10px 10px 0 0;
+}
+
+.add-insta {
+    background-image: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.add-yt {
+    border-radius: 0 0 10px 10px;
+    min-height: 400px;
+    background-color: #FF0000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes welcome-ani {
+    0% {
+        color: #222222;
+        text-shadow: #b9b9b9 0px 0px 20px;
+    }
+    50% {
+        color: #b9b9b9;
+        text-shadow: #222222 0px 0px 20px;
+    }
+    100% {
+        color: #222222;
+        text-shadow: #b9b9b9 0px 0px 20px;
+    }
+}
+
+
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden; 
+}
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track-piece {
+    background-color: #d4d4d4;
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgba(94,94,94,0.89);
+}
+::selection {
+    background-color: grey;
+    color: white;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat";
+}
+
+
+@media only screen and (max-width: 991px){
+
+    .-section {
+        width: 100%;
+    }
+    .-subsection-info {
+        margin-top: 50px;
+    }
+    .-topic- {
+        text-align: center;
+    }
+    .a {
+        padding-top: 30px;
+    }
+    .image {
+        height: 100px;
+    }
+
+}
+
+
+.-main-content {
+    margin: 0;
+    margin-top: 10px;
+}
+.-section- {
+    padding-bottom: 100px;
+}
+.-topic- {
+    font-family: "Lobster";
+    font-size: 50px;
+    text-align: center;
+}
+.-subsection- {
+    border-radius: 7px;
+    padding: 20px;
+    transition: 0.5s;
+}
+.-subsection-info, .-subsection-img{
+    font-family: "Nunito";
+    
+}
+.-subsection-img {
+    border-radius: 5px 5px 5px 5px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.image {
+    transition: 0.5s;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    height: 300px;
+    cursor: pointer;
+    border: none;
+    
+}
+.-input {
+    width: 50vw;
+    padding: 10px;
+    border-radius: 7px;
+    border: none;
+}
+
+.-icons-icons:hover {
+    color: #b2b2b2;
+}
+.img-modal {
+    max-width: 100%;
+    max-height:100%;
+}
+
+.inf {
+    position: fixed;
+    bottom: 10px;
+    z-index: 9;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 10px;
+    border-radius: 5px;
+    
+}
+
+.loader, .dark-light-d {
+				width: 100%;
+				height: 100vh;
+				z-index: 999;
+				background-color: rgba(0, 0, 0, 0.5);
+				color: #ebebeb;
+				display: flex;
+				justify-content: center;
+    font-family: "Nunito";
+    font-size: 20px;
+    align-items: center;		
+    	position: fixed;
+  				bottom: 0;
+  				right: 0;	
+}
+
+.foot {
+				padding: 50px;
+				color: white;
+				text-align: center;
+}
+.dark-light-btn {
+				position:fixed;
+				top: 10px;
+				right: 10px;
+				z-index: 9999;
+}
+
+.social-media {
+				display: flex;
+				flex-direction: column;
+				background-color: black;
+				position: fixed;
+  		 bottom: 50px;
+  			left: 0;
+  			border-radius: 0 5px 5px 0;
+  			z-index: 989;
+}
+.sm {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				border-radius: 5px;
+				align-items: center;
+				background-color: black;
+			}
+.sm a .btn i {
+				font-size: 30px;
+				padding: 10px;
+				color: white;
+				}
+
+.add-yt p span, .add-insta p span, .add-snapchat p span{
+				font-family: "Lobster";
+}
+.s {
+				margin-left: 20px;
+				margin-right: 20px;				
+}
+.feedback {
+				width: 100%;
+				border: none;
+				height: 770px;
+}
+
+</style>
+<script>
+			/* 
+			console.log(83)
+			video_data = [
+								"6TfLAGgIgE8",
+								"871zTXkj4qA",
+								"74-K1VPWL74",
+								"HcSBHxIboeY",
+								"qLTa8xmbSZI",
+								"2ZaPBOdfenE"
+				];
+				for(i=0; i==video_data.length;i++) {
+								$(".-row-ourimages").appand("<iframe class='image col-xl-6' src=" + "'" + video_data[i] + "' width='420px'></iframe>");
+				}
+				*/
+</script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <meta charset="UTF-8">
+    <title>Profile - Het Shah</title>
+</head>
+<body>
+				<div class="dark-light-d" style="display: none">
+				<i class="fa fa-adjust"></i>
+</div>
+<div class="loader" onclick="hideModal()">
+ <span class="fa fa-circle-o-notch fa-spin"></span>
+</div>
+<script>
+				var dark = false;
+    $(document).ready(function(){
+    				$(".loader").fadeOut(1000, function() {
+    				$(".loader").html("<p>I hope you like it! ♥️</p>").fadeIn(1000).delay(1000).fadeOut(1000);
+    								});
+    });
+    function darkLight() {
+    				if(dark == true) {
+    								$(".dark-light-d").fadeIn(500).css({"display": "flex"});
+    								$(".app").css({"background-color": "white", "color": "black"});
+    								$(".dark-light-d").css({"background-color": "white", "color": "black"});
+    								$("hr").css({"background-color": "black"});
+    								dark = false;
+    								$(".dark-light-d").delay(500).fadeOut(500);
+    								}
+    								else {
+    								$(".dark-light-d").fadeIn(500).css({"display": "flex"});
+    								$(".dark-light-d").css({"background-color": "#2d2d2d", "color": "#ababab"});
+    								$(".app").css({"background-color": "#2d2d2d", "color": "#ababab"});
+    								$("hr").css({"background-color": "#ababab"});
+    								dark = true;
+    								$(".dark-light-d").delay(500).fadeOut(500);
+    								}
+    }
+</script>
+<div class="social-media shadow">
+				<a href="https://www.snapchat.com/add/h_anonymous04">
+				<button class="btn" type="button" style="color: yellow">
+								<i class="fa fa-snapchat"></i>
+				</button>
+				</a>
+				<a href="https://instagram.com/__.lanonymousl.__">
+				<button class="btn" type="button" style="color: white">
+								<i class="fa fa-instagram"></i>
+				</button>
+				</a>
+				<a href="https://www.youtube.com/channel/UCPbknMSofUnafFm3s959lhw">
+				<button class="btn" type="button" style="color: #ff0000">
+								<i class="fa fa-youtube-play"></i>
+				</button>
+				</a>
+</div>
+<button class="dark-light-btn btn btn-light" type="button" onclick="darkLight()">
+				<i class="fa fa-adjust"></i>
+</button>
+<div class="app" id="top">
+<div class="welcome shadow">
+        <p>Welcome</p>
+</div>
+    
+<div class="-main-content">
+    <div class="-section- container" id="about" style="margin-top: 50px;">
+        <h2 class="-topic-">
+            About
+            <hr style="border: 0;border-top: 3px solid rgba(39,39,39,0.89); color: white; width: 130px">
+        </h2>
+        <br>
+        <div class="row -subsection- -subsection-img">
+            <div class="col-lg-6" style="display: flex;justify-content: center;align-items: center">
+                <div class="-subsection-img shadow" style="height: 500px;width: 300px;background-image: url('https://wallpapercave.com/wp/wp5146415.jpg')"></div>
+            </div>
+            <div class="col-lg-6 -subsection-info">
+                Hello there! I am Het Shah. Currently, I am in 11th(Sci). My DOB is 25/5/2004. Dont forget to wish me😜.The guy in the above image is not me(obviously)😅.I love programming and building amazing stuff. I started learning HTML, CSS and JS in 6th grade. I used to spend hours to learn these things. So, I decided to make a website for myself. I am also a gamer, not professional one though. I used to play PUBG Mobile a lot. I was quite good in that. Then, I started playing PC FPS games(mainly Valorant). Video editing is my favourite. Most of my friends asks me that which software do I use for editing. It is "Wondershare Filmora 9". I want to learn how to edit with other softwares such as Sony Vegas, Adobe Premiere. Feel free to message me on any of the below mentioned social media. Dont forget to add me on Snapchat and follow me on Instagram. Just tap on the icons <a href="#social">below</a> and you will be directed to my profile. It looks like I talked too much related technical stuff, so I am ending this. Thank you for your precious time.♥️
+            </div>
+        </div>
+
+    </div>
+    <hr>
+    <h2 class="-topic-">
+            Get Connected!
+            <hr style="border: 0;border-top: 3px solid rgba(39,39,39,0.89); color: white; width: 130px">
+        </h2>
+  <div class="s" style="margin-top: 50px;margin-bottom: 100px;">
+  				
+<div class="add-snapchat shadow" id="social">
+    <a href="https://www.snapchat.com/add/h_anonymous04" target="_blank">
+       <p class="fa fa-snapchat" style="font-size: 100px; color: black; display: flex;justify-content: center;align-items: center;"><span style="font-size:30px; margin-left: 20px">Snapchat</span></p>
+       </a>
+    </div>
+    <div class="add-insta shadow">
+    <a href="https://instagram.com/__.lanonymousl.__" target="_blank">
+        <p class="fa fa-instagram" style="font-size: 100px; color: white;display: flex;justify-content: center;align-items: center;">
+        				<span style="font-size:30px; margin-left: 20px">Instagram</span></p>
+        </p>
+        </a>
+    </div>
+    <div class="add-yt shadow">
+    <a href="https://www.youtube.com/channel/UCPbknMSofUnafFm3s959lhw" target="_blank">
+            <p class="fa fa-youtube-play" style="font-size: 100px; color: white; display: flex;justify-content: center;align-items: center;">
+            				<span style="font-size:30px; margin-left: 20px">YouTube</span></p>
+            </p> 
+            </a>
+    </div>
+</div>
+    <hr>
+    <div class="-section- container">
+        <h2 class="-topic-" align="center">
+            Edited Videos
+            <hr style="border-top: 3px solid rgba(39,39,39,0.89); width: 150px;color: white;">
+        </h2>
+        <br>
+        <div class="container img-cont">
+            <div class="-row-ourimages">
+            				<iframe class="image col-xl-6" width="420"
+src="https://www.youtube.com/embed/871zTXkj4qA"></iframe>
+<iframe class="image col-xl-6" width="420"
+src="https://www.youtube.com/embed/74-K1VPWL74"></iframe>
+<iframe class="image col-xl-6" width="420"
+src="https://www.youtube.com/embed/HcSBHxIboeY"></iframe>
+<iframe class="image col-xl-6" width="420"
+src="https://www.youtube.com/embed/2ZaPBOdfenE"></iframe>
+<iframe class="image col-xl-6" width="420"
+src="https://www.youtube.com/embed/enPcYVnCSVA"></iframe>
+<iframe class="image col-xl-6" width="420"
+src="https://www.youtube.com/embed/6TfLAGgIgE8"></iframe>
+<iframe class="image col-xl-6" width="420"
+src="https://www.youtube.com/embed/CEQzruP1x54"></iframe>
+<iframe class="image col-xl-6" width="420"
+src="https://www.youtube.com/embed/qLTa8xmbSZI"></iframe>
+<iframe class="image col-xl-6" width="420"
+src="https://www.youtube.com/embed/WI0Gnx0mnjM"></iframe>
+<iframe class="image col-xl-6" width="420"
+src="https://www.youtube.com/embed/1seArE7sP8A"></iframe>
+
+
+<br><br><br>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <br>
+    <h4 class="-topic-">
+            Ask for your own website for free!
+            <hr style="border: 0;border-top: 3px solid rgba(39,39,39,0.89); color: white; width: 130px;">
+            </h4>
+            <p style="text-align: center; padding: 20px;" class="text-dieabled"><b>Text me on:</b></p>
+       <div style="display: flex; justify-content: center; align-items: center; width:100%;padding-bottom: 50px">
+       				<div class="sm shadow">
+				<a href="https://www.snapchat.com/add/h_anonymous04">
+				<button class="btn" type="button">
+								<i class="fa fa-snapchat"></i>
+				</button>
+				</a>
+				<a href="https://instagram.com/__.lanonymousl.__">
+				<button class="btn" type="button">
+								<i class="fa fa-instagram"></i>
+				</button>
+				</a>
+</div>
+
+       </div> 
+       <hr>
+    <h2 class="-topic-">
+            Feedback!
+            <hr style="border: 0;border-top: 3px solid rgba(39,39,39,0.89); color: white; width: 130px">
+        </h2>
+        <br>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfVzpcVtGiaXT4mhDcJzEq4qeT8HyuRLpxLvHqps8_mR2X4qg/viewform?embedded=true" class="feedback">Your browser does not support iframe</iframe>
+   
+        <br>
+    
+</div>
+<div class="foot bg-light text-dark shadow">
+				<span class="foot-text">
+								This website is developed by Het Shah.
+								<br>
+								Currently, under development
+								<br>
+				</span>
+</div>
+<!-- Made By Het Shah -->
+<!-- Email: shahhet6153@gmail.com -->
+</body>
+</html>

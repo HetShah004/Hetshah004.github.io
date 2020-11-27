@@ -10,6 +10,9 @@
   			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 				<title>Lets Chat - Group</title>
 				<style>
+								html {
+												scroll-behaviour: smooth;
+								}
 								.app {
 												
 								}
@@ -56,7 +59,7 @@
 								.app .input-msg {
 												width: 100%;
 												background-color: #222222;
-												position: fixed;
+												
 												box-shadow: rgba(0, 0, 0, .1) 0 0 30px;
     								 display:flex;
     								 align-items: center;
@@ -109,6 +112,7 @@ function validate() {
         }
         else {
             $(".enter-name").fadeOut(1000);
+            $(".input-msg-field").focus();
         }
 }
 
@@ -123,18 +127,29 @@ firebaseConfig = {
   				};
   firebase.initializeApp(firebaseConfig);
     var db = firebase.database().ref("/messages");
+    var date = new Date();
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
     function snd() {
         var message = $(".input-msg-field").val();
         db.push().set({
             "name": name,
-            "message": message
+            "message": message,
+            "time": hours + ':' + minutes
         });  
         $(".input-msg-field").val("");
+       
     }
     db.on("child_added", function(snapshot) {
+    $(".input-msg-field").focus();
             $(".chat-body-").append(
-                "<div class='message-send'><div class='message'><span style='font-weight: bold; padding-bottom: 10px;' class='name'>" + snapshot.val().name + "</span><br><span id='msg-receive'>"+ snapshot.val().message + "</span></div></div>"
+                "<div class='message-send'><div class='message'><span style='font-weight: bold;font-size: 15px' class='name badge badge-light'>" + snapshot.val().name + "</span><br><br><span id='msg-receive'>"+ snapshot.val().message + "</span><br><br><p class='badge badge-secondary'>" + snapshot.val().time +"</p></div></div>"
             );
+            $(".chat-body-").scrollTop($(".app").height());
+            $(".input-msg-field").focus();
+            });
+            db.on("child_removed", function(snapshot) {
+            				$(".chat-body-").html("");
             });
   		
 				</script>

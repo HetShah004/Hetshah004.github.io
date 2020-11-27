@@ -119,26 +119,37 @@ firebaseConfig = {
   				};
   firebase.initializeApp(firebaseConfig);
   var name = "";
+  var date = new Date();
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+  var db = firebase.database().ref("/messages");
 function validate() {
-        name = document.getElementById("name").value;
+        name = document.getElementById("name").value.trim();
         if(name === "" || name === null) {
             $(".error").css({"color": "rgba(225, 0, 0, 1)"});
         }
         else {
+        if(name == "") {
+        				$(".enter-name").fadeIn(1000);
+        }
             $(".enter-name").fadeOut(1000);
+            db.push().set({
+            			"name": name,
+            			"time": hours + ':' + minutes,
+            			"type": "joined"
+            });
             $(".input-msg-field").focus();
         }
 }
-
-    var date = new Date();
-    var hours = date.getHours();
-    var minutes = date.getMinutes();
-    var db = firebase.database().ref("/messages");
     function snd() {
         var message = $(".input-msg-field").val();
+        if(name == "") {
+        				$(".enter-name").fadeIn(1000);
+        }
         db.push().set({
             "name": name,
             "message": message,
+            "type": "message",
             "time": hours + ':' + minutes
         });  
         $(".input-msg-field").val("");
@@ -146,10 +157,16 @@ function validate() {
        
     }
     db.on("child_added", function(snapshot) {
-    
-            $(".chat-body-").append(
+    if(snapshot.val().type == "message") {
+    				 $(".chat-body-").append(
                 "<div class='message-send'><div class='message'><span style='font-weight: bold;font-size: 15px' class='name badge badge-light'>" + snapshot.val().name + "</span><br><br><span id='msg-receive'>"+ snapshot.val().message + "</span><br><br><p class='badge badge-secondary'>" + snapshot.val().time +"</p></div></div>"
             );
+    }
+    else if (snapshot.val().type == "joined"){
+    				$(".chat-body-").append(
+                "<div class='message-send'><div class='message'><span style='font-weight: bold;font-size: 15px' class='name badge badge-light'>" + snapshot.val().name + "</span> just joined the chat!<br><br>" + "<p class='badge badge-secondary'>" + snapshot.val().time +"</p></div></div>"
+            );
+    };
             $(".chat-body-").scrollTop($(".app").height());
             
             });

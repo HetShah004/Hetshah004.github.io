@@ -136,15 +136,13 @@
   								$(".error-k").css({"color": "rgb(225, 0, 0)"});
   								return;
   				}
-  				
-  				if($("#pas").val().trim() == "" || $("#pas").val().trim() === undefined) {
-  								$(".error-p").css({"color": "rgb(225, 0, 0)"});
+  				if(keyy.indexOf(".") == -1 && keyy.indexOf("#") == -1 && keyy.indexOf("$") == -1 && keyy.indexOf("[") == -1 && keyy.indexOf("]") == -1) {
+  								console.log("pass");
+  				}
+  				else {
+  								$(".psw-e").css({"color": "rgb(225, 0, 0)"});
   								return;
   				}
-  				
-  				db.ref("/private_sessions/" + key_c).set({
-  								"password": $("#pas").val().trim()
-  				});
   				db.ref("/private_sessions/" + key_c + "/messages"). push().set({
   								"name": $("#name").val(),
             "type": "joined",
@@ -153,6 +151,7 @@
             
   				});
   				$(".enter-name").fadeOut(1000, function(){
+  								
   								db.ref("/private_sessions/" + keyy + "/messages").on("child_added", function(snapshot) {
   												if (snapshot.val().type == "joined"){
     				$(".chat-body-").append(
@@ -184,6 +183,8 @@
 										"hours": hours,
 										"minutes": minutes
   				});
+  				$(".input-msg-field").val("");
+  				$(".input-msg-field").focus();
   }
 				</script>
 				<div class="enter-name">
@@ -195,15 +196,12 @@
         				<hr>
         				<div class="form-group">
         								<label for="num" class="error-k">Enter Code:</label>
-        								<input id="num" type="number" class="form-control">
+        								<input id="num" type="text" class="form-control">
         								<br>
-        								<div class="form-group">
-        								<label for="pas" class="error-p">Enter Password:</label>
-        								<input id="pas" type="pas" class="form-control">
-        								</div>
+        								
         								<br>
         								<p class="text-dark">
-        												<span class="text-danger">Note: </span>Enter code to join another private session(if exists) or new session will be created. Share with your friends to talk privately. Those having code with them can join you. Your session will be deleted after 24hours.</p>
+        												<span class="text-danger">Note: </span>Enter code to join another private session(if exists) or new session will be created. Share with your friends to talk privately. Those having code with them can join you. Consider making a code long which should include alphabets ann numbers. <span class="psw-e">Password must not have "." , "#", "$", "[" and "]" </span></p>
         								<br>
         								<button class="btn btn-light form-control" onclick="enter_code()">Go</button>
         				</div>	        

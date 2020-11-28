@@ -148,19 +148,20 @@
   				db.ref("/private_sessions/" + key_c + "/messages"). push().set({
   								"name": $("#name").val(),
             "type": "joined",
-            "time": hours + ':' + minutes
+             "hours": hours,
+										"minutes": minutes
+            
   				});
   				$(".enter-name").fadeOut(1000, function(){
   								db.ref("/private_sessions/" + keyy + "/messages").on("child_added", function(snapshot) {
   												if (snapshot.val().type == "joined"){
     				$(".chat-body-").append(
-                "<div class='message-send'><div class='message'><span style='font-weight: bold;font-size: 15px' class='name'>" + snapshot.val().name + "</span> just joined the chat!<br><br>" + "<p class='badge badge-secondary'>" + snapshot.val().time +"</p></div></div>"
+                "<div class='message-send'><div class='message'><span style='font-weight: bold;font-size: 15px' class='name'>" + snapshot.val().name + "</span> just joined the chat!<br><br>" + "<p class='badge badge-secondary'>" + snapshot.val().hours + ":"+ snapshot.val().minutes +"</p></div></div>"
             );
-           
     }
     else if(snapshot.val().type == "message") {
     				 $(".chat-body-").append(
-                "<div class='message-send'><div class='message'><span style='font-weight: bold;font-size: 15px' class='name badge badge-light'>" + snapshot.val().name + "</span><br><br><span id='msg-receive'>"+ snapshot.val().message + "</span><br><br><p class='badge badge-secondary'>" + snapshot.val().time +"</p></div></div>"
+                "<div class='message-send'><div class='message'><span style='font-weight: bold;font-size: 15px' class='name badge badge-light'>" + snapshot.val().name + "</span><br><br><span id='msg-receive'>"+ snapshot.val().message + "</span><br><br><p class='badge badge-secondary'>" + snapshot.val().hours + ":"+ snapshot.val().minutes +"</p></div></div>"
             );
             document.getElementById("aud").volume = 1;
             document.getElementById("aud").play();
@@ -180,7 +181,8 @@
   								"name": $("#name").val(),
             "type": "message",
             "message": $(".input-msg-field").val().trim().replace(/</g, "&lt;"),
-            "time": hours + ':' + minutes
+										"hours": hours,
+										"minutes": minutes
   				});
   }
 				</script>

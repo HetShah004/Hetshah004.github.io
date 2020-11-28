@@ -153,6 +153,9 @@
     				 $(".chat-body-").append(
                 "<div class='message-send'><div class='message'><span style='font-weight: bold;font-size: 15px' class='name badge badge-light'>" + snapshot.val().name + "</span><br><br><span id='msg-receive'>"+ snapshot.val().message + "</span><br><br><p class='badge badge-secondary'>" + snapshot.val().time +"</p></div></div>"
             );
+            document.getElementById("aud").volume = 1;
+            document.getElementById("aud").play();
+    						 document.getElementById("aud").currentTime = 0;
     }
   								});
   				}); 
@@ -161,10 +164,13 @@
   });
   }
   function snd() {
+  				if($(".input-msg-field").val().trim() == "") {
+  								return;
+  				}
   				db.ref("/private_sessions/" + keyy + "/messages"). push().set({
   								"name": $("#name").val(),
             "type": "message",
-            "message": $(".input-msg-field").val(),
+            "message": $(".input-msg-field").val().trim(),
             "time": hours + ':' + minutes
   				});
   }

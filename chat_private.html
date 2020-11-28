@@ -132,6 +132,10 @@
   								$(".error").css({"color": "rgb(225, 0, 0)"});
   								return;
   				}
+  				if(keyy == "" || keyy === undefined) {
+  								$(".error-k").css({"color": "rgb(225, 0, 0)"});
+  								return;
+  				}
   				db.ref("/private_sessions/" + key_c + "/messages"). push().set({
   								"name": $("#name").val(),
             "type": "joined",
@@ -173,7 +177,7 @@
         				</div>
         				<hr>
         				<div class="form-group">
-        								<label for="num">Enter Code:</label>
+        								<label for="num" class="error-k">Enter Code:</label>
         								<input id="num" type="number" class="form-control">
         								<br>
         								<p class="text-dark">

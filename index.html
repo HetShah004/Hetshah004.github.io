@@ -161,6 +161,9 @@ function validate() {
     				 $(".chat-body-").append(
                 "<div class='message-send'><div class='message'><span style='font-weight: bold;font-size: 15px' class='name badge badge-light'>" + snapshot.val().name + "</span><br><br><span id='msg-receive'>"+ snapshot.val().message + "</span><br><br><p class='badge badge-secondary'>" + snapshot.val().time +"</p></div></div>"
             );
+            document.getElementById("aud").volume = 1;
+            document.getElementById("aud").play();
+    						document.getElementById("aud").currentTime = 0;
     }
     else if (snapshot.val().type == "joined"){
     				$(".chat-body-").append(
@@ -194,5 +197,6 @@ function validate() {
 												<button type="button" onclick="snd()">
 																<i class="fa fa-send"></i>												</button>
 								</div>
+								<audio src="https://raw.githubusercontent.com/HetShah004/Hetshah004.github.io/main/clearly-602.mp3" id="aud"></audio>
 </body>
 </html>

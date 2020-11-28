@@ -122,8 +122,8 @@ firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   var name = "";
   var date = new Date();
-    var hours = date.getHours();
-    var minutes = date.getMinutes();
+    var hours = date.getUTCHours();
+    var minutes = date.getUTCMinutes();
   var db = firebase.database().ref("/messages");
 function validate() {
         name = document.getElementById("name").value.trim();
@@ -131,20 +131,21 @@ function validate() {
             $(".error").css({"color": "rgba(225, 0, 0, 1)"});
         }
         else {
-        if(name == "") {
+        if(name.replace(/</g, "&lt;") == "") {
         				$(".enter-name").fadeIn(1000);
         }
             $(".enter-name").fadeOut(1000);
             db.push().set({
             			"name": name,
-            			"time": hours + ':' + minutes,
+            			"hours": hours,
+            			"minutes": minutes,
             			"type": "joined"
             });
             $(".input-msg-field").focus();
         }
 }
     function snd() {
-        var message = $(".input-msg-field").val().trim();
+        var message = $(".input-msg-field").val().trim().replace(/</g, "&lt;");
         if(message == "") {
   								return;
   				}
@@ -155,7 +156,8 @@ function validate() {
             "name": name,
             "message": message,
             "type": "message",
-            "time": hours + ':' + minutes
+            "hours": hours,
+            "minutes": minutes
         });  
         $(".input-msg-field").val("");
         $(".input-msg-field").focus();
@@ -164,7 +166,7 @@ function validate() {
     db.on("child_added", function(snapshot) {
     if(snapshot.val().type == "message") {
     				 $(".chat-body-").append(
-                "<div class='message-send'><div class='message'><span style='font-weight: bold;font-size: 15px' class='name badge badge-light'>" + snapshot.val().name + "</span><br><br><span id='msg-receive'>"+ snapshot.val().message + "</span><br><br><p class='badge badge-secondary'>" + snapshot.val().time +"</p></div></div>"
+                "<div class='message-send'><div class='message'><span style='font-weight: bold;font-size: 15px' class='name badge badge-light'>" + snapshot.val().name + "</span><br><br><span id='msg-receive'>"+ snapshot.val().message + "</span><br><br><p class='badge badge-secondary'>" + snapshot.val().hours + ":"+ snapshot.val().minutes +"</p></div></div>"
             );
             document.getElementById("aud").volume = 1;
             document.getElementById("aud").play();
@@ -172,7 +174,7 @@ function validate() {
     }
     else if (snapshot.val().type == "joined"){
     				$(".chat-body-").append(
-                "<div class='message-send'><div class='message'><span style='font-weight: bold;font-size: 15px' class='name'>" + snapshot.val().name + "</span> just joined the chat!<br><br>" + "<p class='badge badge-secondary'>" + snapshot.val().time +"</p></div></div>"
+                "<div class='message-send'><div class='message'><span style='font-weight: bold;font-size: 15px' class='name'>" + snapshot.val().name + "</span> just joined the chat!<br><br>" + "<p class='badge badge-secondary'>" + snapshot.val().hours + ":"+ snapshot.val().minutes  +"</p></div></div>"
             );
     };
             $(".chat-body-").scrollTop($(".app").height());
@@ -198,7 +200,9 @@ function validate() {
 												</a>
 								</div>
 				<div class="app">
-								<div class='chat-body-'></div>
+								<div class='chat-body-'>
+												<p class="is-typing"></p>
+								</div>
 				</div>
 				<div class="input-msg">
 												<input type="text" placeholder="Enter message..." class="input-msg-field">

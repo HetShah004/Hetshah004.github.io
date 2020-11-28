@@ -136,6 +136,15 @@
   								$(".error-k").css({"color": "rgb(225, 0, 0)"});
   								return;
   				}
+  				
+  				if($("#pas").val().trim() == "" || $("#pas").val().trim() === undefined) {
+  								$(".error-p").css({"color": "rgb(225, 0, 0)"});
+  								return;
+  				}
+  				
+  				db.ref("/private_sessions/" + key_c).set({
+  								"password": $("#pas").val().trim()
+  				});
   				db.ref("/private_sessions/" + key_c + "/messages"). push().set({
   								"name": $("#name").val(),
             "type": "joined",
@@ -170,7 +179,7 @@
   				db.ref("/private_sessions/" + keyy + "/messages"). push().set({
   								"name": $("#name").val(),
             "type": "message",
-            "message": $(".input-msg-field").val().trim(),
+            "message": $(".input-msg-field").val().trim().replace(/</g, "&lt;"),
             "time": hours + ':' + minutes
   				});
   }
@@ -185,6 +194,11 @@
         				<div class="form-group">
         								<label for="num" class="error-k">Enter Code:</label>
         								<input id="num" type="number" class="form-control">
+        								<br>
+        								<div class="form-group">
+        								<label for="pas" class="error-p">Enter Password:</label>
+        								<input id="pas" type="pas" class="form-control">
+        								</div>
         								<br>
         								<p class="text-dark">
         												<span class="text-danger">Note: </span>Enter code to join another private session(if exists) or new session will be created. Share with your friends to talk privately. Those having code with them can join you. Your session will be deleted after 24hours.</p>

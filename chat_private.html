@@ -8,7 +8,7 @@
   			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-				<title>Page title</title>
+				<title>Private Session</title>
 				<style>
 								html {
 												scroll-behaviour: smooth;
@@ -143,7 +143,7 @@
   												$(".max-c").css({"color": "rgb(225, 0, 0)"});
   								return;
   								}
-  								console.log("pass");
+  								
   				}
   				else {
   								$(".psw-e").css({"color": "rgb(225, 0, 0)"});
@@ -192,6 +192,10 @@
   				$(".input-msg-field").val("");
   				$(".input-msg-field").focus();
   }
+  function share() {
+  				var share_l = "whatsapp://send?text=" + "Code is '" + keyy + "'. Join me here: " + "https://hetshah004.github.io/chat_private.html";
+  				window.open(share_l, "_blank");
+  }
 				</script>
 				<div class="enter-name">
         <div style="background: white; padding: 50px; border-radius: 10px; overflow: scroll; height: 70vh" class="w-75">
@@ -223,8 +227,7 @@
 												<span class="header-title-">Chat - By Het Shah</span>
 												<a href="https://hetshah004.github.io/">
 															<button class="btn btn-dark">Group Session</button>	
-												</a>
-												
+												</a>												
 								</div>
 				<div class="app">
 								<div class='chat-body-'></div>
@@ -233,6 +236,10 @@
 												<input type="text" placeholder="Enter message..." class="input-msg-field">
 												<button type="button" onclick="snd()">
 																<i class="fa fa-send"></i>												</button>
+													<button type="button" onclick="share()">
+																<i class="fa fa-share"></i>	
+												</button>
+												</a>
 								</div>
 								<audio src="https://raw.githubusercontent.com/HetShah004/Hetshah004.github.io/main/clearly-602.mp3" id="aud"></audio>		
 </body>

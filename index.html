@@ -130,10 +130,14 @@ function validate() {
         if(name === "" || name === null) {
             $(".error").css({"color": "rgba(225, 0, 0, 1)"});
         }
+        else if(name.length > 10) {
+        				alert("Name length must be less than 10");
+        }
         else {
         if(name.replace(/</g, "&lt;") == "") {
         				$(".enter-name").fadeIn(1000);
         }
+        
             $(".enter-name").fadeOut(1000);
             db.push().set({
             			"name": name,
@@ -186,9 +190,9 @@ function validate() {
 				</script>
     <div class="enter-name form-group">
         <div style="background: white; padding: 50px; border-radius: 10px"><p class="error"><b>Enter your name(Required):</b></p>
-        <input id="name" value="" type="text" class="havename form-control">
+        <input id="name" placeholder="Max 10" value="" type="text" class="havename form-control">
         <br>
-            <button class="btn btn-primary form-control" type="button" onclick="validate()">Enter</button>
+            <button class="btn btn-light form-control" type="button" onclick="validate()">Enter</button>
             <br><br>
             <p class="text-center">OR</p>
             <a href="https://hetshah004.github.io/chat_private.html">

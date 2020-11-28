@@ -144,7 +144,10 @@ function validate() {
         }
 }
     function snd() {
-        var message = $(".input-msg-field").val();
+        var message = $(".input-msg-field").val().trim();
+        if(message == "") {
+  								return;
+  				}
         if(name == "") {
         				$(".enter-name").fadeIn(1000);
         }

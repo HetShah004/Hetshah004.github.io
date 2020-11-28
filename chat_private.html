@@ -16,6 +16,8 @@
 								 .header- {
 												width: 100%;
 												padding: 30px;
+												display: flex;
+												justify-content: space-between;
 												background-color: rgba(0, 0, 0, 0.2);
 												backdrop-filter: blur(3px);
 												box-shadow: rgba(0, 0, 0, .1) 0 0 30px;
@@ -129,7 +131,7 @@
   				var name = $("#name").val().trim();
   				keyy = key_c;
   				if(name == "" || name === undefined) {
-  								$(".error").css({"color": "rgb(225, 0, 0)"});
+  								$(".error").css({color: "rgb(225, 0, 0)"});
   								return;
   				}
   				if(keyy == "" || keyy === undefined) {
@@ -137,6 +139,10 @@
   								return;
   				}
   				if(keyy.indexOf(".") == -1 && keyy.indexOf("#") == -1 && keyy.indexOf("$") == -1 && keyy.indexOf("[") == -1 && keyy.indexOf("]") == -1) {
+  								if(keyy.length > 20 || name.length > 10) {
+  												$(".max-c").css({"color": "rgb(225, 0, 0)"});
+  								return;
+  								}
   								console.log("pass");
   				}
   				else {
@@ -191,17 +197,17 @@
         <div style="background: white; padding: 50px; border-radius: 10px" class="w-75">
         				<div class="form-group">
         								<label for="name" class="error">Enter your name:</label>
-        								<input id="name" class="form-control">
+        								<input id="name" placeholder="Max 10" class="form-control">
         				</div>
         				<hr>
         				<div class="form-group">
         								<label for="num" class="error-k">Enter Code:</label>
-        								<input id="num" type="text" class="form-control">
+        								<input id="num" type="text" class="form-control" placeholder="Max 20">
         								<br>
         								
         								<br>
         								<p class="text-dark">
-        												<span class="text-danger">Note: </span>Enter code to join another private session(if exists) or new session will be created. Share with your friends to talk privately. Those having code with them can join you. Consider making a code long which should include alphabets ann numbers. <span class="psw-e">Password must not have "." , "#", "$", "[" and "]" </span></p>
+        												<span class="text-danger">Note: </span>Enter code to join another private session(if exists) or new session will be created. Share with your friends to talk privately. Those having code with them can join you. Consider making a code long(<span class="max-c">max 20</span>) which should include alphabets and numbers. <span class="psw-e">Code must not include "." , "#", "$", "[" and "]" </span></p>
         								<br>
         								<button class="btn btn-light form-control" onclick="enter_code()">Go</button>
         				</div>	        
@@ -209,6 +215,10 @@
     </div>
     <div class="header-">
 												<span class="header-title-">Chat - By Het Shah</span>
+												<a href="https://hetshah004.github.io/chat_private.html">
+															<button class="btn btn-dark">Group Session</button>	
+												</a>
+												
 								</div>
 				<div class="app">
 								<div class='chat-body-'></div>

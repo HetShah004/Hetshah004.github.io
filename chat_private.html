@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
   			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   			<meta name="viewport" content="width=device-width, initial-scale=1">
   			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  			<scriptĀ src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 				<title>Private Session</title>
 				<style>
@@ -149,6 +150,12 @@
   								$(".psw-e").css({"color": "rgb(225, 0, 0)"});
   								return;
   				}
+  				db.ref("private_sessions/" +keyy).child("online").transaction(function(online){
+        				return online + 1;
+        });
+        db.ref("private_sessions/" + keyy).child("online").on("value", function(snapshot) {
+  				$(".online").html("<b>Online: " + snapshot.val() + "</b>");
+  });
   				db.ref("/private_sessions/" + key_c + "/messages"). push().set({
   								"name": $("#name").val(),
             "type": "joined",
@@ -178,6 +185,13 @@
   				$(".chat-body-").html("");
   });
   }
+  window.onunload = function() {
+  				if(name.trim() != ""){
+  				db.ref("private_session/" +keyy).child("online").transaction(function(online){
+        				return (online - 1);
+        });
+        }
+  };
   function snd() {
   				if($(".input-msg-field").val().trim() == "") {
   								return;
@@ -220,6 +234,7 @@
             <a href="https://hetshah004.github.io/">
 															<button class="btn btn-dark form-control">Group Session</button>	
 												</a>
+												
         				</div>	        
         </div>
     </div>
@@ -227,8 +242,10 @@
 												<span class="header-title-">Chat - By Het Shah</span>
 												<a href="https://hetshah004.github.io/">
 															<button class="btn btn-dark">Group Session</button>	
-												</a>												
+												</a>		
+																			
 								</div>
+								<p class="online text-center p-3"><b></b></p>
 				<div class="app">
 								<div class='chat-body-'></div>
 				</div>
